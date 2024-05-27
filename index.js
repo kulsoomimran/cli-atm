@@ -5,23 +5,23 @@ let myBalance = 20000;
 let myPin = 69875;
 const pinAnswer = await inquirer.prompt([
     {
-        message: chalk.yellow("Enter your PIN "),
+        message: chalk.blue("Enter your PIN "),
         type: "number",
         name: "pinNumber",
     },
 ]);
 if (pinAnswer.pinNumber === myPin) {
-    console.log(chalk.greenBright("Correct PIN code!!"));
+    console.log(chalk.bgGreen("Correct PIN code!!"));
     const operationAnswer = await inquirer.prompt([
         {
-            message: chalk.yellow("Please select any operation"),
+            message: chalk.cyanBright("Please select any operation"),
             type: "list",
             name: "operation",
             choices: ["Check Balance", "WithDrawal", "Deposit", "Fast Cash"],
         },
     ]);
     if (operationAnswer.operation === "Check Balance") {
-        console.log(chalk.cyanBright(`Your current balance is: ${myBalance}`));
+        console.log(chalk.magentaBright(`Your current balance is: ${myBalance}`));
     }
     else if (operationAnswer.operation === "WithDrawal") {
         const withdrawalAns = await inquirer.prompt([
@@ -32,8 +32,8 @@ if (pinAnswer.pinNumber === myPin) {
             },
         ]);
         if (withdrawalAns.withdrawalAmount <= myBalance) {
-            console.log(chalk.green("Successfully Withdrawal"));
-            console.log(chalk.cyanBright(`Now your balance is ${myBalance - withdrawalAns.withdrawalAmount}`));
+            console.log(chalk.greenBright("Successfully Withdrawal!!"));
+            console.log(chalk.magentaBright(`Now your balance is ${myBalance - withdrawalAns.withdrawalAmount}`));
         }
         else if (withdrawalAns.withdrawalAmount > myBalance) {
             console.log(chalk.red("Insufficient balance"));
@@ -47,8 +47,8 @@ if (pinAnswer.pinNumber === myPin) {
                 name: "depositedAmount",
             },
         ]);
-        console.log(chalk.green("Successfully Deposited"));
-        console.log(chalk.cyanBright(`Now your balance is ${myBalance + depositAns.depositedAmount}`));
+        console.log(chalk.greenBright("Successfully Deposited!!"));
+        console.log(chalk.magentaBright(`Now your balance is ${myBalance + depositAns.depositedAmount}`));
     }
     else if (operationAnswer.operation === "Fast Cash") {
         const fastcashAns = await inquirer.prompt([
@@ -60,22 +60,22 @@ if (pinAnswer.pinNumber === myPin) {
             },
         ]);
         if (fastcashAns.fastcashAmount === 500) {
-            console.log(chalk.cyanBright(`Now your balance is ${myBalance - 500}`));
+            console.log(chalk.magentaBright(`Now your balance is ${myBalance - 500}`));
         }
         else if (fastcashAns.fastcashAmount === 1000) {
-            console.log(chalk.cyanBright(`Now your balance is ${myBalance - 1000}`));
+            console.log(chalk.magentaBright(`Now your balance is ${myBalance - 1000}`));
         }
         else if (fastcashAns.fastcashAmount === 2000) {
-            console.log(chalk.cyanBright(`Now your balance is ${myBalance - 2000}`));
+            console.log(chalk.magentaBright(`Now your balance is ${myBalance - 2000}`));
         }
         else if (fastcashAns.fastcashAmount === 5000) {
-            console.log(chalk.cyanBright(`Now your balance is ${myBalance - 5000}`));
+            console.log(chalk.magentaBright(`Now your balance is ${myBalance - 5000}`));
         }
         else if (fastcashAns.fastcashAmount === 10000) {
-            console.log(chalk.cyanBright(`Now your balance is ${myBalance - 10000}`));
+            console.log(chalk.magentaBright(`Now your balance is ${myBalance - 10000}`));
         }
         else if (fastcashAns.fastcashAmount === 20000) {
-            console.log(chalk.cyanBright(`Now your balance is ${myBalance - 20000}`));
+            console.log(chalk.magentaBright(`Now your balance is ${myBalance - 20000}`));
         }
     }
 }
